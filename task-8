@@ -1,0 +1,86 @@
+1.Get all the countries from Asia continent /region using Filter function......................
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+xhr.send();
+xhr.onload = function () {
+    if (xhr.status >= 200 && 300 > xhr.status) {
+        var data = JSON.parse(xhr.response)
+        for (let i = 0; i < data.length; i++) {
+            let a = data.filter(d => d.region = "asia")
+            console.log(a)
+            break;
+        }
+    }
+}
+
+2.Get all the countries with a population of less than 2 lakhs using Filter function...................
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+xhr.send();
+xhr.onload = function () {
+if (xhr.status >= 200 && 300 > xhr.status) {
+        var data = JSON.parse(xhr.response)
+        for (let i = 0; i < data.length; i++) {
+            let a = data.filter(d => d.population <= 200000)
+            console.log(a)
+            break;
+        }
+    }
+}
+3.Print the following details name, capital, flag using forEach function..............
+var xhr = new XMLHttpRequest()
+xhr.open("GET", "https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+xhr.send();
+xhr.onload = function () {
+    if (xhr.status >= 200 && xhr.status < 300) {
+        var data = JSON.parse(xhr.response);
+
+        data.forEach(x => {
+            console.log(`€
+            name :${x.name}
+
+            capital : ${x.capital}
+
+            flag :${x.flag}
+            
+            
+            `)
+
+        });
+
+    }
+}
+4.Print the total population of countries using reduce function.........................
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET","https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json" );
+xhr.send();
+xhr.onload = function () {
+if (xhr.status >= 200 && 300 > xhr.status) {
+        var data = JSON.parse(xhr.response)
+       let data1=[]
+       for(let hi of data){
+         var a= hi.population
+         data1.push(a);
+       }
+       var data2= data1.reduce((c,d)=>c+d);
+       console.log(data2)
+       
+        }
+    }
+5.Print the country which uses US Dollars as currency...............................................
+var xhr = new XMLHttpRequest();
+xhr.open("GET","https://raw.githubusercontent.com/rvsp/restcountries-json-data/master/res-countries.json");
+xhr.send();
+xhr.onload=function(){
+    if(xhr.status>=200 && xhr.status<300){
+        var data=JSON.parse(xhr.response);
+        for(let cou of data){
+            // if(cou.currencies[0].name==)
+            if(cou.currencies[0].name=="United States dollar"){
+                console.log(cou.name);
+            }
+            
+        }
+    }
+}
